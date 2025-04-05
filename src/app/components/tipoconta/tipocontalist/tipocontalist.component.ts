@@ -3,6 +3,7 @@ import { Tipoconta } from '../../../models/tipoconta';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
+import { TipocontaService } from '../../../services/tipoconta.service';
 
 @Component({
   selector: 'app-tipocontalist',
@@ -13,9 +14,14 @@ import Swal from 'sweetalert2';
 export class TipocontalistComponent
 {
   lista: Tipoconta[] = [];
+  router = inject(Router);
+  objetoService =  inject(TipocontaService);
 
   constructor()
   {
+
+    this.listaAll();
+    
     this.lista = [
       {id_tipoconta: 1,cd_tipoconta: '001', nm_tipoconta: 'Conta Corrente'},
     ];
@@ -43,9 +49,23 @@ export class TipocontalistComponent
     
   }
 
-  router = inject(Router);
 
-
+  listaAll() {
+    this.objetoService.findAll().subscribe({
+      next: (lista: Tipoconta[]) =>{
+        this.lista = lista;
+      },
+      error: (error: any) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Erro '+error.status,
+          text: 'Erro ao buscar os dados!',
+          confirmButtonText: 'OK'
+        });
+      }
+    });
+  }
+  
   novo()
   {
     this.router.navigate(['admin/tipoconta/new']);
