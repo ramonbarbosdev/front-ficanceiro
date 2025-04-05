@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Tipoconta } from '../../../models/tipoconta';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-tipocontadetails',
@@ -44,7 +45,13 @@ export class TipocontadetailsComponent implements OnInit {
   {
     if (this.object.id_tipoconta > 0)
     {
-      alert("Editado com sucesso!");
+      Swal.fire({
+        title: 'Editado com sucesso!',
+        // text: 'Editado com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
+
       this.router.navigate(['/admin/tipoconta'],
       {
         state: { objectEditado: this.object }
@@ -52,7 +59,12 @@ export class TipocontadetailsComponent implements OnInit {
     }
     else
     {
-      alert("Salvo com sucesso!");
+      Swal.fire({
+        title: 'Salvo com sucesso!',
+        // text: 'Salvo com sucesso!',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      })
       this.router.navigate(['/admin/tipoconta'],
       {
         state: { objectNovo: this.object }

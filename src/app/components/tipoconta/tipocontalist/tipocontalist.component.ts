@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Tipoconta } from '../../../models/tipoconta';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tipocontalist',
@@ -56,11 +57,36 @@ export class TipocontalistComponent
     this.router.navigate(['admin/tipoconta/edit', object.id_tipoconta]);
   }
 
-  remover(object: any){
-      let indice = this.lista.findIndex((item) => item.id_tipoconta == object.id_tipoconta);
-      if (indice != -1)
-      {
-        this.lista.splice(indice, 1);
-      }
+  remover(object: any)
+  {
+
+      Swal.fire({
+        title: "Deseja realmente excluir?",
+        text: "Você não poderá reverter isso!",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Sim",
+        cancelButtonText: "Cancelar",
+        denyButtonText: `Não`
+      }).then((result) => {
+
+        if (result.isConfirmed)
+        {
+          let indice = this.lista.findIndex((item) => item.id_tipoconta == object.id_tipoconta);
+          if (indice != -1)
+          {
+            this.lista.splice(indice, 1);
+          }
+
+          Swal.fire("Registro excluido!", "", "success");
+
+        }
+        else if (result.isDenied)
+        {
+          Swal.fire("Registro não excluido!", "", "info");
+        }
+      });
+
+    
   }
 }
