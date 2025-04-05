@@ -8,11 +8,11 @@
             <form (ngSubmit)="onSave()">
               <div class="form-group">
                 <label for="username">Codigo</label>
-                <input type="text" class="form-control" id="cd_tipoconta" name="cd_tipoconta" [(ngModel)]="cd_tipoconta" required>
+                <input type="text" class="form-control" id="cd_tipoconta" name="cd_tipoconta" [(ngModel)]="object.cd_tipoconta" required>
               </div>
               <div class="form-group">
                 <label for="text">Nome</label>
-                <input type="text" class="form-control" id="cd_tipoconta" [(ngModel)]="nm_tipoconta" name="nm_tipoconta" required>
+                <input type="text" class="form-control" id="cd_tipoconta" [(ngModel)]="object.nm_tipoconta" name="nm_tipoconta" required>
               </div>
               <button type="submit" class="btn btn-primary btn-block" >Salvar</button>
             </form>

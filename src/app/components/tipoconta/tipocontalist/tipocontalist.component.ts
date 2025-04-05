@@ -49,7 +49,6 @@ export class TipocontalistComponent
     
   }
 
-
   listaAll() {
     this.objetoService.findAll().subscribe({
       next: (lista: Tipoconta[]) =>{
@@ -79,7 +78,6 @@ export class TipocontalistComponent
 
   remover(object: any)
   {
-
       Swal.fire({
         title: "Deseja realmente excluir?",
         text: "Você não poderá reverter isso!",
@@ -92,14 +90,24 @@ export class TipocontalistComponent
 
         if (result.isConfirmed)
         {
-          let indice = this.lista.findIndex((item) => item.id_tipoconta == object.id_tipoconta);
-          if (indice != -1)
-          {
-            this.lista.splice(indice, 1);
-          }
+          
+          this.objetoService.deletar(object.id_tipoconta).subscribe({
+            next: (response: any) =>
+            {
+              Swal.fire(response, "", "success");
+              this.listaAll();
 
-          Swal.fire("Registro excluido!", "", "success");
-
+            },
+            error: (e: any) => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Erro '+e.error.code,
+                text: e.error.error,
+                confirmButtonText: 'OK'
+              });
+            }
+          });
+       
         }
         else if (result.isDenied)
         {
