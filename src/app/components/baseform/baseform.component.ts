@@ -51,11 +51,11 @@ export abstract class BaseFormComponent<T> implements OnInit {
           this.router.navigate([this.redirectRoute]);
         });
       },
-      error: (error: { status: any; error: { message: any; }; }) => {
+      error: (e: { error: { code: any; error: any; }; }) => {
         Swal.fire({
           icon: 'error',
-          title: `Erro ${error.status}`,
-          text: error.error?.message || 'Erro ao salvar o objeto.',
+          title: e.error.code,
+          text: e.error.error || 'Erro ao salvar o objeto.',
           confirmButtonText: 'OK'
         });
       }
