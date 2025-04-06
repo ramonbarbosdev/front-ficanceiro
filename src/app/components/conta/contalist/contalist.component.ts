@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ContaService } from '../../../services/conta.service';
 import { CommonModule } from '@angular/common';
 import { BaseListComponent } from '../../baselist/baselist.component';
+import { TipocontaService } from '../../../services/tipoconta.service';
 
 @Component({
   selector: 'app-contalist',
@@ -17,9 +18,14 @@ export class ContalistComponent extends BaseListComponent<Conta> {
   objetoService = inject(ContaService);
   PRIMARYKEY = 'id_conta';
 
+  tipoConta: any[] = []; 
+  tipoContaMap: { [id: number]: string } = {};
+  tipoContaService = inject(TipocontaService);
+
   constructor() {
     super();
     this.listaAll();
+    this.carregarTiposConta()
   }
 
   onShow() {
@@ -33,4 +39,20 @@ export class ContalistComponent extends BaseListComponent<Conta> {
   onDelete(conta: Conta) {
     super.remover(conta);
   }
+
+  carregarTiposConta() {
+    this.tipoContaService.findAll().subscribe({
+      next: (tipos) => {
+        this.tipoConta = tipos;
+        this.tipoContaMap = tipos.reduce((acc, tipo) => {
+          acc[tipo.id_tipoconta] = tipo.nm_tipoconta;
+          return acc;
+        }, {} as { [id: number]: string });
+      },
+      error: (error) => {
+        console.error('Erro ao carregar tipos de conta', error);
+      }
+    });
+  }
+
 }
