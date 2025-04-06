@@ -18,8 +18,28 @@ import { BaseFormComponent } from '../../baseform/baseform.component';
   templateUrl: './contadetails.component.html',
   styleUrl: './contadetails.component.scss'
 })
-export class ContadetailsComponent extends BaseFormComponent<Conta> {
+ export class ContadetailsComponent extends BaseFormComponent<Conta> {
   service = inject(ContaService);
+  
   redirectRoute = '/admin/conta';
   primaryKey: keyof Conta = 'id_conta';
+
+  tipoConta: Tipoconta[] = [];
+  tipoContaService =  inject(TipocontaService)
+
+  override ngOnInit(): void {
+    super.ngOnInit(); 
+    this.carregarTiposConta();
+  }
+
+  carregarTiposConta() {
+    this.tipoContaService.findAll().subscribe({
+      next: (tipos) => {
+        this.tipoConta = tipos;
+      },
+      error: (error) => {
+        console.error('Erro ao carregar tipos de conta', error);
+      }
+    });
+  }
 }
