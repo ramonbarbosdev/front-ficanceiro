@@ -62,18 +62,36 @@ export class TipocontadetailsComponent implements OnInit {
               icon: 'success',
               confirmButtonText: 'OK'
             }).then(() => {
-              this.router.navigate(['/admin/tipoconta'], {
-                state: {
-                  ['objectEditado']: this.object
-                }
-              });
+              this.router.navigate(['/admin/tipoconta']);
+            });
+          },
+          error: (e) => {
+            Swal.fire({
+              icon: 'error',
+              title: e.error.code,
+              text: e.error.error,
+              confirmButtonText: 'OK'
+            });
+          }
+        });
+      }
+      else
+      {
+        this.objectoService.save(this.object).subscribe({
+          next: () => {
+            Swal.fire({
+              title: 'Cadastrado com sucesso!' ,
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }).then(() => {
+              this.router.navigate(['/admin/tipoconta']);
             });
           },
           error: (error) => {
             Swal.fire({
               icon: 'error',
               title: `Erro ${error.status}`,
-              text: error.error?.message || 'Erro ao atualizar o objeto.',
+              text: error.error?.message || 'Erro ao cadastrar o objeto.',
               confirmButtonText: 'OK'
             });
           }

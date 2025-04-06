@@ -57,7 +57,7 @@ export class TipocontaService {
    
     const url = `${this.API}/${id}`;
 
-    return this.http.post<Tipoconta>(url, { headers,  responseType: 'text' as 'json'  }).pipe(
+    return this.http.delete<Tipoconta>(url, { headers,  responseType: 'text' as 'json'  }).pipe(
       catchError(error => {
         return throwError(() => error);
       })

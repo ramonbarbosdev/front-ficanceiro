@@ -19,34 +19,7 @@ export class TipocontalistComponent
 
   constructor()
   {
-
-    this.listaAll();
-    
-    this.lista = [
-      {id_tipoconta: 1,cd_tipoconta: '001', nm_tipoconta: 'Conta Corrente'},
-    ];
-
-    let carroNovo = history.state.objectNovo;
-    let objectEditado = history.state.objectEditado; 
-
-    if(carroNovo)
-    {
-      this.lista.push(carroNovo);
-    }
-    
-    if(objectEditado)
-    {
-      let indice = this.lista.findIndex((item) => item.id_tipoconta == objectEditado.id_tipoconta);
-      if (indice != -1)
-      {
-        this.lista[indice] = objectEditado;
-      }
-      else
-      {
-        this.lista.push(objectEditado);
-      }
-    }
-    
+    this.listaAll();   
   }
 
   listaAll() {
@@ -68,11 +41,9 @@ export class TipocontalistComponent
   novo()
   {
     this.router.navigate(['admin/tipoconta/new']);
-
   }
   editar(object: Tipoconta)
   {
-    
     this.router.navigate(['admin/tipoconta/edit', object.id_tipoconta]);
   }
 
