@@ -1,1 +1,28 @@
-<p>contalist works!</p>
+<div class="container mt-4">
+    <h2 class="mb-3">Lista de Tipos </h2>
+
+    <button class="btn btn-sm btn-primary" (click)="novo()">Novo</button>
+
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>ID</th>
+          <th>Codigo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let objeto of lista; let i = index">
+          <td>{{ objeto.id_conta }}</td>
+          <td>{{ objeto.cd_conta }}</td>
+          <td>{{ objeto.nm_conta }}</td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" (click)="editar(objeto)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="remover(objeto)">Remover</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

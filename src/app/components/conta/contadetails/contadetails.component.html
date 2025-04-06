@@ -1,1 +1,46 @@
-<p>contadetails works!</p>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+         
+          <div class="card-body">
+            <form (ngSubmit)="onSave()">
+
+                <app-input-text
+                [label]="'Codigo'"
+                [inputId]="'cd_conta'"
+                [(model)]="object.cd_conta"
+                [required]="true">
+                laceholder="Digite o nome da conta"
+                </app-input-text>
+
+                <app-input-text
+                [label]="'Nome'"
+                [inputId]="'nm_conta'"
+                [(model)]="object.nm_conta"
+                [required]="true">
+                </app-input-text>
+              
+                <app-input-select
+                [label]="'Tipo de Conta'"
+                [inputId]="'id_tipoconta'"
+                [(model)]="object.id_tipoconta"
+                [required]="true"
+                [options]="tipoConta"
+                [valueField]="'id_tipoconta'"
+                [labelField]="'nm_tipoconta'">
+               </app-input-select>
+              
+              
+                <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+              </form>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

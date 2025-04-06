@@ -85,7 +85,5 @@ export class TipocontalistComponent
           Swal.fire("Registro não excluido!", "", "info");
         }
       });
-
-    
   }
 }
