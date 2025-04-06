@@ -20,6 +20,6 @@ import { BaseFormComponent } from '../../baseform/baseform.component';
 })
 export class ContadetailsComponent extends BaseFormComponent<Conta> {
   service = inject(ContaService);
-  redirectRoute = '/admin/tipoconta';
+  redirectRoute = '/admin/conta';
   primaryKey: keyof Conta = 'id_conta';
 }
