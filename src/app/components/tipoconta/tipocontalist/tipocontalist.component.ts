@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Tipoconta } from '../../../models/tipoconta';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import Swal from 'sweetalert2';
+import { BaseListComponent } from '../../baselist/baselist.component';
 import { TipocontaService } from '../../../services/tipoconta.service';
 
 @Component({
@@ -11,79 +11,26 @@ import { TipocontaService } from '../../../services/tipoconta.service';
   templateUrl: './tipocontalist.component.html',
   styleUrl: './tipocontalist.component.scss'
 })
-export class TipocontalistComponent
+export class TipocontalistComponent extends BaseListComponent<Tipoconta> 
 {
-  lista: Tipoconta[] = [];
-  router = inject(Router);
-  objetoService =  inject(TipocontaService);
-
-  constructor()
-  {
-    this.listaAll();   
-  }
-
-  listaAll() {
-    this.objetoService.findAll().subscribe({
-      next: (lista: Tipoconta[]) =>{
-        this.lista = lista;
-      },
-      error: (error: any) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Erro '+error.status,
-          text: 'Erro ao buscar os dados!',
-          confirmButtonText: 'OK'
-        });
-      }
-    });
-  }
+    router = inject(Router);
+    objetoService = inject(TipocontaService);
+    PRIMARYKEY = 'id_tipoconta';
   
-  novo()
-  {
-    this.router.navigate(['admin/tipoconta/new']);
-  }
-  editar(object: Tipoconta)
-  {
-    this.router.navigate(['admin/tipoconta/edit', object.id_tipoconta]);
-  }
-
-  remover(object: any)
-  {
-      Swal.fire({
-        title: "Deseja realmente excluir?",
-        text: "Você não poderá reverter isso!",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: "Sim",
-        cancelButtonText: "Cancelar",
-        denyButtonText: `Não`
-      }).then((result) => {
-
-        if (result.isConfirmed)
-        {
-          
-          this.objetoService.deletar(object.id_tipoconta).subscribe({
-            next: (response: any) =>
-            {
-              Swal.fire(response, "", "success");
-              this.listaAll();
-
-            },
-            error: (e: any) => {
-              Swal.fire({
-                icon: 'error',
-                title: 'Erro '+e.error.code,
-                text: e.error.error,
-                confirmButtonText: 'OK'
-              });
-            }
-          });
-       
-        }
-        else if (result.isDenied)
-        {
-          Swal.fire("Registro não excluido!", "", "info");
-        }
-      });
-  }
+    constructor() {
+      super();
+      this.listaAll();
+    }
+  
+    onShow() {
+      super.novo('admin/tipoconta/new');
+    }
+  
+    onEdit(conta: Tipoconta) {
+      super.editarRota('admin/tipoconta/edit', conta);
+    }
+  
+    onDelete(conta: Tipoconta) {
+      super.remover(conta);
+    }
 }

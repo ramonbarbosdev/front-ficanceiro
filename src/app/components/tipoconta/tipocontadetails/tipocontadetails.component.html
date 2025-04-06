@@ -5,16 +5,29 @@
         <div class="card mt-5">
          
           <div class="card-body">
+            
+
             <form (ngSubmit)="onSave()">
-              <div class="form-group">
-                <label for="username">Codigo</label>
-                <input type="text" class="form-control" id="cd_tipoconta" name="cd_tipoconta" [(ngModel)]="object.cd_tipoconta" required>
-              </div>
-              <div class="form-group">
-                <label for="text">Nome</label>
-                <input type="text" class="form-control" id="cd_tipoconta" [(ngModel)]="object.nm_tipoconta" name="nm_tipoconta" required>
-              </div>
-              <button type="submit" class="btn btn-primary btn-block" >Salvar</button>
+
+              <app-input-text
+              [label]="'Codigo'"
+              [inputId]="'cd_tipoconta'"
+              [(model)]="object.cd_tipoconta"
+              [required]="true">
+              placeholder="Digite o nome da conta"
+              </app-input-text>
+
+              <app-input-text
+              [label]="'Nome'"
+              [inputId]="'nm_tipoconta'"
+              [(model)]="object.nm_tipoconta"
+              [required]="true">
+              placeholder="Digite o nome da conta"
+              </app-input-text>
+
+            
+            
+              <button type="submit" class="btn btn-primary btn-block">Salvar</button>
             </form>
           </div>
         </div>

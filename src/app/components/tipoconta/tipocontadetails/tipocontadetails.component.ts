@@ -4,11 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Tipoconta } from '../../../models/tipoconta';
 import Swal from 'sweetalert2'
 import { TipocontaService } from '../../../services/tipoconta.service';
+import { SelectComponent } from "../../component/select/select.component";
+import { InputTextComponent } from '../../component/input-text/input-text.component';
 
 @Component({
   selector: 'app-tipocontadetails',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, InputTextComponent],
   templateUrl: './tipocontadetails.component.html',
   styleUrls: ['./tipocontadetails.component.scss']
 })

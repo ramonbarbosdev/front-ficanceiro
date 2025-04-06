@@ -106,11 +106,11 @@ export class ContadetailsComponent
               this.router.navigate(['/admin/conta']);
             });
           },
-          error: (error) => {
+          error: (e) => {
             Swal.fire({
               icon: 'error',
-              title: `Erro ${error.status}`,
-              text: error.error?.message || 'Erro ao cadastrar o objeto.',
+              title: e.error.code,
+              text: e.error.error|| 'Erro ao cadastrar o objeto.',
               confirmButtonText: 'OK'
             });
           }
