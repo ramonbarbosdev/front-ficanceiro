@@ -1,0 +1,36 @@
+<div class="container mt-4">
+
+    <div class="mb-4" style="display: flex; flex-direction: row; justify-content: space-between;">
+      <h2 class="mb-3">Lista de Lancamentos </h2>
+      <button class="btn btn-sm btn-success" (click)="onShow()">Novo</button>
+    </div>
+  
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>Conta</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Valor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let objeto of lista; let i = index">
+            <td>{{ objeto.cd_lancamento }}</td>
+            <td>{{ objeto.ds_lancamento }}</td>
+            <td>{{contaMap[objeto.id_conta] }}</td>
+            <td>{{ objeto.dt_lancamento | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ statusMap[objeto.id_statuslancamento]  }}</td>
+            <td>{{ objeto.vl_lancamento * 1  |currency : 'BRL'}}</td>
+            <td>
+              <button class="btn btn-sm btn-primary me-1" (click)="onEdit(objeto)">Editar</button>
+              <button class="btn btn-sm btn-danger" (click)="onDelete(objeto)">Remover</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
