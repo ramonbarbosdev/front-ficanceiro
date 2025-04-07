@@ -3,11 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 import Swal from 'sweetalert2';
+import { InputTextComponent } from '../../component/input-text/input-text.component';
+import { InputPasswordComponent } from '../../component/input-password/input-password.component';
 
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule],
+  imports: [FormsModule, InputTextComponent, InputPasswordComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })

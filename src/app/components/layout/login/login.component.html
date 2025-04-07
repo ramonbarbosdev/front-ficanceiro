@@ -8,14 +8,22 @@
           </div>
           <div class="card-body">
             <form (ngSubmit)="logar()">
-              <div class="form-group">
-                <label for="username">Usuário</label>
-                <input type="text" class="form-control" id="username" name="username" [(ngModel)]="login" required>
-              </div>
-              <div class="form-group">
-                <label for="password">Senha</label>
-                <input type="password" class="form-control" id="password" [(ngModel)]="senha" name="password" required>
-              </div>
+              <app-input-text
+                [label]="'Usuário'"
+                [inputId]="'login'"
+                [(model)]="login"
+                [required]="true"
+                placeholder="Login de acesso">
+              </app-input-text>
+
+              <app-input-password
+                [label]="'Senha'"
+                [inputId]="'senha'"
+                [(model)]="senha"
+                [required]="true"
+                placeholder="Senha de acesso">
+             </app-input-password>
+
               <button type="submit" class="btn btn-primary btn-block" >Entrar</button>
             </form>
           </div>
