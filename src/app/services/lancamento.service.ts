@@ -14,14 +14,8 @@ export class LancamentoService {
 
   findAll(): Observable<any[]>  
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-  
     const url = `${this.API}/`;
-
-    return this.http.get<any[]>(url, { headers }).pipe(
+    return this.http.get<any[]>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -31,14 +25,9 @@ export class LancamentoService {
 
   findById(id: number): Observable<any>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    
-    const url = `${this.API}/${id}`;
 
-    return this.http.get<any>(url, { headers }).pipe(
+    const url = `${this.API}/${id}`;
+    return this.http.get<any>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -46,14 +35,8 @@ export class LancamentoService {
   }
   deletar(id: number): Observable<any>  
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-   
     const url = `${this.API}/${id}`;
-
-    return this.http.delete<any>(url, { headers  }).pipe(
+    return this.http.delete<any>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -62,14 +45,8 @@ export class LancamentoService {
 
   save(object: any): Observable<any>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
     const url = `${this.API}/`;
-
-    return this.http.post<any>(url, object, { headers }).pipe(
+    return this.http.post<any>(url, object).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -78,14 +55,8 @@ export class LancamentoService {
 
   update(object: any): Observable<any>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
     const url = `${this.API}/`;
-
-    return this.http.put<any>(url, object, { headers }).pipe(
+    return this.http.put<any>(url, object).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -94,14 +65,8 @@ export class LancamentoService {
 
   findStatus(): Observable<any>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    
     const url = `http://localhost:8080/controlefinanceiro/statuslancamento/`;
-
-    return this.http.get<any>(url, { headers }).pipe(
+    return this.http.get<any>(url,).pipe(
       catchError(error => {
         return throwError(() => error);
       })

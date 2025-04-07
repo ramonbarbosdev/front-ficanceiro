@@ -7,11 +7,12 @@ import { ContalistComponent } from './components/conta/contalist/contalist.compo
 import { ContadetailsComponent } from './components/conta/contadetails/contadetails.component';
 import { LancamentolistComponent } from './components/lancamento/lancamentolist/lancamentolist.component';
 import { LancamentodetaisComponent } from './components/lancamento/lancamentodetais/lancamentodetais.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
-    {path: 'admin', component: PrincipalComponent, children:
+    {path: 'admin', component: PrincipalComponent,  canActivateChild: [authGuard],  children:
         [
             {path: 'tipoconta', component: TipocontalistComponent},
             {path: 'tipoconta/new', component: TipocontadetailsComponent},

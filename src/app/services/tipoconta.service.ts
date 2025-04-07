@@ -12,20 +12,12 @@ export class TipocontaService {
 
   API = 'http://localhost:8080/controlefinanceiro/tipoconta';
 
-
-
   constructor() { }
 
   findAll(): Observable<any[]>  
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-  
     const url = `${this.API}/`;
-
-    return this.http.get<any[]>(url, { headers }).pipe(
+    return this.http.get<any[]>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -35,14 +27,8 @@ export class TipocontaService {
 
   findById(id: number): Observable<Tipoconta>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    
     const url = `${this.API}/${id}`;
-
-    return this.http.get<Tipoconta>(url, { headers }).pipe(
+    return this.http.get<Tipoconta>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -50,14 +36,8 @@ export class TipocontaService {
   }
   deletar(id: number): Observable<any>  
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-   
     const url = `${this.API}/${id}`;
-
-    return this.http.delete<Tipoconta>(url, { headers,  responseType: 'text' as 'json'  }).pipe(
+    return this.http.delete<Tipoconta>(url).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -66,14 +46,8 @@ export class TipocontaService {
 
   save(object: Tipoconta): Observable<Tipoconta>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
     const url = `${this.API}/`;
-
-    return this.http.post<Tipoconta>(url, object, { headers }).pipe(
+    return this.http.post<Tipoconta>(url, object).pipe(
       catchError(error => {
         return throwError(() => error);
       })
@@ -82,14 +56,8 @@ export class TipocontaService {
 
   update(object: Tipoconta): Observable<Tipoconta>
   {
-    const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc0NDAzMDI1N30.oSMB2Rf3WydWrfrtRwtwwcWOsEKtVHnARE9gHzUTD_iWeXKOjJpEuyroH4_vtsB23CEg4WRsu4Me7w3ZZYmOSA" // ou onde você estiver guardando
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-
     const url = `${this.API}/`;
-
-    return this.http.put<Tipoconta>(url, object, { headers }).pipe(
+    return this.http.put<Tipoconta>(url, object).pipe(
       catchError(error => {
         return throwError(() => error);
       })

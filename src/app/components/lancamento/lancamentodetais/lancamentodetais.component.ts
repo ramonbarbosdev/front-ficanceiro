@@ -6,10 +6,11 @@ import { SelectComponent } from "../../component/select/select.component";
 import { InputTextComponent } from '../../component/input-text/input-text.component';
 import { Conta } from '../../../models/conta';
 import { ContaService } from '../../../services/conta.service';
+import { InputDateComponent } from '../../component/input-date/input-date.component';
 
 @Component({
   selector: 'app-lancamentodetais',
-  imports: [SelectComponent, InputTextComponent],
+  imports: [SelectComponent, InputTextComponent, InputDateComponent],
   templateUrl: './lancamentodetais.component.html',
   styleUrl: './lancamentodetais.component.scss'
 })

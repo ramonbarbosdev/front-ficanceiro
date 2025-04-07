@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-text',
+  selector: 'app-input-date',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
     <label [for]="inputId">{{ label }}</label>
     <input
       class="form-control"
-      type= "text"
+      type="date"
       [id]="inputId"
       [name]="inputId"
       [value]="model ?? null"
@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
   </div>
 `
 })
-export class InputTextComponent {
+export class InputDateComponent {
   @Input() model: any;
   @Output() modelChange = new EventEmitter<any>();
 
@@ -31,7 +31,8 @@ export class InputTextComponent {
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
 
-  onInputChange(event: Event) {
+  onInputChange(event: Event)
+  {
     const value = (event.target as HTMLInputElement).value;
     this.modelChange.emit(value);
   }

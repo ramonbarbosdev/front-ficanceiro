@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -15,16 +17,26 @@ export class LoginComponent {
 
   router = inject(Router);
 
+  constructor(private auth: AuthService) {}
+
   logar()
   {
-      if(this.login == 'admin' && this.senha == 'admin')
-      {
-          this.router.navigate(['admin/tipoconta']);
-      }
-      else
-      {
-          alert('Login ou senha inválidos!');
-      }
+      this.auth.login({login: this.login, senha: this.senha}).subscribe({
+        next: (res: any) => {
+          this.auth.setToken(res.Authorization);
+          this.router.navigate(['admin/lancamento'])
+        },
+        error: err =>
+        {
+          console.log(err)
+          Swal.fire({
+                    icon: 'error',
+                    title: "Login inválido",
+                    text: "Login ou senha incorreto",
+                    confirmButtonText: 'OK'
+                  });
+        } 
+      }) 
 
   }
 
