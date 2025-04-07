@@ -1,0 +1,75 @@
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+         
+          <div class="card-body">
+            
+
+            <form (ngSubmit)="onSave()">
+
+
+            <div class="row">
+                <div class="col">
+                    <app-input-text
+                    [label]="'Codigo'"
+                    [inputId]="'cd_lancamento'"
+                    [(model)]="object.cd_lancamento"
+                    [required]="true">
+                    placeholder="Digite o nome da conta"
+                    </app-input-text>
+                </div>
+                <div class="col">
+                    <app-input-select
+                    [label]="'Conta'"
+                    [inputId]="'id_conta'"
+                    [(model)]="object.id_conta"
+                    [required]="true"
+                    [options]="conta"
+                    [valueField]="'id_conta'"
+                    [labelField]="'nm_conta'">
+                   </app-input-select>
+                </div>
+                <div class="col">
+                    <app-input-text
+                    [label]="'Data'"
+                    [inputId]="'dt_lancamento'"
+                    [(model)]="object.dt_lancamento"
+                    [required]="true">
+                    placeholder="Digite o nome da conta"
+                    </app-input-text>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <app-input-text
+                    [label]="'Codigo'"
+                    [inputId]="'cd_lancamento'"
+                    [(model)]="object.cd_lancamento"
+                    [required]="true">
+                    placeholder="Digite o nome da conta"
+                    </app-input-text>
+                </div>
+                <div class="col">
+                    <app-input-text
+                    [label]="'Descriçao'"
+                    [inputId]="'ds_lancamento'"
+                    [(model)]="object.ds_lancamento"
+                    [required]="true">
+                    placeholder="Digite o nome da conta"
+                    </app-input-text>
+                </div>
+            </div>
+            
+              <button type="submit" class="btn btn-primary btn-block">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

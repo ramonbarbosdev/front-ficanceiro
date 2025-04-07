@@ -6,6 +6,7 @@ import { TipocontadetailsComponent } from './components/tipoconta/tipocontadetai
 import { ContalistComponent } from './components/conta/contalist/contalist.component';
 import { ContadetailsComponent } from './components/conta/contadetails/contadetails.component';
 import { LancamentolistComponent } from './components/lancamento/lancamentolist/lancamentolist.component';
+import { LancamentodetaisComponent } from './components/lancamento/lancamentodetais/lancamentodetais.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -19,8 +20,8 @@ export const routes: Routes = [
             {path: 'conta/new', component: ContadetailsComponent},
             {path: 'conta/edit/:id', component: ContadetailsComponent},
             {path: 'lancamento', component: LancamentolistComponent},
-            {path: 'lancamento/new', component: ContadetailsComponent},
-            {path: 'lancamento/edit/:id', component: ContadetailsComponent},
+            {path: 'lancamento/new', component: LancamentodetaisComponent},
+            {path: 'lancamento/edit/:id', component: LancamentodetaisComponent},
         ]
     },
 
