@@ -1,0 +1,17 @@
+<div class="form-group">
+    <label [for]="inputId">{{ label }}</label>
+    <div class="input-group mb-3">
+      <span class="input-group-text">R$</span>
+      <input
+        [id]="inputId"
+        type="text"
+        class="form-control"
+        [value]="format(model)"
+        (input)="onInputChange($event)"
+        (blur)="onBlur($event)"
+        [placeholder]="placeholder"
+        [required]="required"
+      />
+    </div>
+  </div>
+  

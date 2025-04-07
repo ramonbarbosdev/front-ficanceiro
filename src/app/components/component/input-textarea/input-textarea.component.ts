@@ -3,13 +3,26 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-date',
+  selector: 'app-input-textarea',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: "input-date.component.html",
-  styleUrl: "input-date.component.scss"
+  template: `
+  <div class="form-group">
+    <label [for]="inputId">{{ label }}</label>
+    <input
+      class="form-control"
+      type= "number"
+      [id]="inputId"
+      [name]="inputId"
+      [value]="model ?? null"
+      (input)="onInputChange($event)"
+      [placeholder]="placeholder"
+      [required]="required"
+    />
+  </div>
+`
 })
-export class InputDateComponent {
+export class InputTextareaComponent {
   @Input() model: any;
   @Output() modelChange = new EventEmitter<any>();
 
@@ -18,8 +31,7 @@ export class InputDateComponent {
   @Input() placeholder: string = '';
   @Input() required: boolean = false;
 
-  onInputChange(event: Event)
-  {
+  onInputChange(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.modelChange.emit(value);
   }

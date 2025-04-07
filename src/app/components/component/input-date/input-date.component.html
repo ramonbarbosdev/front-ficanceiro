@@ -1,1 +1,16 @@
-<p>input-date works!</p>
+<div class="form-group">
+    <label [for]="inputId">{{ label }}</label>
+    <div class="input-group mb-3">
+        <!-- <span class="input-group-text">R$</span> -->
+        <input
+          class="form-control"
+          type="date"
+          [id]="inputId"
+          [name]="inputId"
+          [value]="model ?? null"
+          (input)="onInputChange($event)"
+          [placeholder]="placeholder"
+          [required]="required"
+        />
+    </div>
+</div>

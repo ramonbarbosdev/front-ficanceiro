@@ -43,24 +43,28 @@
 
             </div>
             <div class="row">
-                <div class="col">
-                    <app-input-text
-                    [label]="'Codigo'"
-                    [inputId]="'cd_lancamento'"
-                    [(model)]="object.cd_lancamento"
-                    [required]="true">
-                    placeholder="Digite o nome da conta"
-                    </app-input-text>
-                </div>
-                <div class="col">
-                    <app-input-text
-                    [label]="'Descriçao'"
-                    [inputId]="'ds_lancamento'"
-                    [(model)]="object.ds_lancamento"
-                    [required]="true">
-                    placeholder="Digite o nome da conta"
-                    </app-input-text>
-                </div>
+              <div class="col">
+                  <app-input-number
+                  [label]="'Valor'"
+                  [inputId]="'vl_lancamento'"
+                  [(model)]="object.vl_lancamento"
+                  [required]="true">
+                  placeholder="Digite o nome da conta"
+                </app-input-number>
+              </div>
+             <div class="col">
+                <app-input-select
+                [label]="'Status'"
+                [inputId]="'id_statuslancamento'"
+                [(model)]="object.id_statuslancamento"
+                [required]="true"
+                [options]="status"
+                [valueField]="'id_statuslancamento'"
+                [labelField]="'ds_statuslancamento'">
+                </app-input-select>
+             </div>
+              
+
             </div>
             
               <button type="submit" class="btn btn-primary btn-block">Salvar</button>

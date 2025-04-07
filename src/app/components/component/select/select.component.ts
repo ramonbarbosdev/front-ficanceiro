@@ -6,24 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-input-select',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-    <div class="form-group">
-      <label [for]="inputId">{{ label }}</label>
-      <select
-        class="form-control"
-        [id]="inputId"
-        [name]="inputId"
-        [value]="model"
-        (change)="onChange($event)"
-        [required]="required"
-      >
-        <option value="" disabled selected>Selecione um tipo</option>
-        <option *ngFor="let item of options" [value]="item[valueField]">
-          {{ item[labelField] }}
-        </option>
-      </select>
-    </div>
-  `
+  templateUrl: "select.component.html",
+  styleUrl: "select.component.scss"
 })
 export class SelectComponent {
   @Input() label!: string;

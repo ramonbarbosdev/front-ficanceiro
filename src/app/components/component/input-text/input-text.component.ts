@@ -6,21 +6,8 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-input-text',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  template: `
-  <div class="form-group">
-    <label [for]="inputId">{{ label }}</label>
-    <input
-      class="form-control"
-      type= "text"
-      [id]="inputId"
-      [name]="inputId"
-      [value]="model ?? null"
-      (input)="onInputChange($event)"
-      [placeholder]="placeholder"
-      [required]="required"
-    />
-  </div>
-`
+  templateUrl: "input-text.component.html",
+  styleUrl: "input-text.component.scss"
 })
 export class InputTextComponent {
   @Input() model: any;
