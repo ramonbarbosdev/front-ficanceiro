@@ -59,11 +59,22 @@
                 [required]="true"
                 [options]="status"
                 [valueField]="'id_statuslancamento'"
-                [labelField]="'ds_statuslancamento'">
+                [labelField]="'id_statuslancamento'">
                 </app-input-select>
              </div>
-              
+            </div>
 
+            <div class="row">
+              <div class="col">
+                <app-input-textarea
+                  [label]="'Descrição'"
+                  [inputId]="'ds_lancamento'"
+                  [(model)]="object.ds_lancamento"
+                  [required]="true"
+                >
+
+                </app-input-textarea>
+              </div>
             </div>
             
               <button type="submit" class="btn btn-primary btn-block">Salvar</button>
